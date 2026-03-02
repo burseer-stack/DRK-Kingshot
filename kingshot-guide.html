@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kingshot — Complete Strategy Guide 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #f0b429;
+    --gold-light: #ffd666;
+    --gold-pale: #ffe99a;
+    --crimson: #e05c4b;
+    --blood: #c0392b;
+    --dark: #0f1117;
+    --dark2: #181c27;
+    --dark3: #1f2436;
+    --dark4: #272d42;
+    --stone: #3a4260;
+    --parchment: #f5ead8;
+    --text: #eef0f8;
+    --text-dim: #9aa3c2;
+    --green: #2ecc71;
+    --green-bright: #72e8a8;
+    --blue: #4a9eda;
+    --blue-bright: #90c8f0;
+    --purple: #b07fe0;
+    --orange: #f08030;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.8;
+    background-image:
+      radial-gradient(ellipse at 20% 0%, rgba(74,158,218,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 100%, rgba(240,180,41,0.05) 0%, transparent 50%);
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── HEADER ── */
+  header {
+    position: relative;
+    text-align: center;
+    padding: 60px 24px 40px;
+    border-bottom: 2px solid var(--gold);
+    background: linear-gradient(180deg, rgba(74,158,218,0.1) 0%, transparent 100%);
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(74,158,218,0.02) 40px,
+      rgba(74,158,218,0.02) 41px
+    );
+  }
+  .crown { font-size: 3rem; display: block; margin-bottom: 8px; animation: float 4s ease-in-out infinite; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+
+  h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    font-weight: 900;
+    color: var(--gold-light);
+    text-shadow: 0 0 40px rgba(201,168,76,0.4), 0 2px 4px rgba(0,0,0,0.8);
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  .subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .header-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+  .badge {
+    background: rgba(74,158,218,0.15);
+    border: 1px solid rgba(74,158,218,0.4);
+    color: var(--blue-bright);
+    padding: 4px 14px;
+    border-radius: 2px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  /* ── NAV / TOC ── */
+  .toc {
+    background: var(--dark3);
+    border: 1px solid var(--stone);
+    border-top: 3px solid var(--gold);
+    padding: 28px 32px;
+    margin: 36px 0;
+    position: relative;
+  }
+  .toc::before {
+    content: '⚔ TABLE OF CONTENTS ⚔';
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--blue-bright);
+    margin-bottom: 16px;
+  }
+  .toc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 6px; }
+  .toc a {
+    color: var(--text);
+    text-decoration: none;
+    font-family: 'Crimson Pro', serif;
+    font-size: 0.95rem;
+    padding: 3px 0;
+    transition: color 0.2s;
+    display: block;
+  }
+  .toc a:hover { color: var(--gold-light); }
+  .toc a::before { content: '› '; color: var(--blue-bright); }
+
+  /* ── SECTION ── */
+  section {
+    margin: 48px 0;
+    scroll-margin-top: 80px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--stone);
+  }
+  .section-icon { font-size: 1.8rem; flex-shrink: 0; }
+  h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--gold-light);
+    margin: 24px 0 10px;
+    letter-spacing: 0.05em;
+  }
+  p { margin-bottom: 14px; color: var(--text); }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--dark3);
+    border: 1px solid var(--stone);
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    position: relative;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .card:hover { border-color: rgba(212,168,67,0.5); box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+  .card-gold { border-left: 3px solid var(--gold); }
+  .card-red  { border-left: 3px solid var(--crimson); }
+  .card-green{ border-left: 3px solid var(--green); }
+  .card-blue { border-left: 3px solid var(--blue); }
+  .card-purple{border-left: 3px solid var(--purple); }
+
+  .card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    color: var(--gold-light);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  /* ── GRID LAYOUTS ── */
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; }
+
+  /* ── TIPS LIST ── */
+  .tips { list-style: none; }
+  .tips li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+    color: var(--text);
+  }
+  .tips li::before { content: '›'; position: absolute; left: 0; font-size: 1.1rem; top: 7px; color: var(--blue-bright); }
+  .tips li:last-child { border-bottom: none; }
+  strong { color: #ffffff; font-weight: 700; }
+
+  /* ── PHASE BOXES ── */
+  .phase {
+    background: var(--dark3);
+    border: 1px solid var(--stone);
+    border-top: 3px solid var(--gold);
+    padding: 22px 26px;
+    margin-bottom: 18px;
+  }
+  .phase-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--blue-bright);
+    text-transform: uppercase;
+  }
+  .phase-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    color: #ffffff;
+    margin: 4px 0 12px;
+  }
+  .phase-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+  .meta-pill {
+    background: rgba(74,158,218,0.15);
+    border: 1px solid rgba(74,158,218,0.35);
+    color: var(--blue-bright);
+    padding: 2px 10px;
+    font-size: 0.82rem;
+    border-radius: 2px;
+    font-family: 'Cinzel', serif;
+  }
+
+  /* ── TABLE ── */
+  .table-wrap { overflow-x: auto; margin: 16px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th {
+    background: rgba(212,168,67,0.14);
+    color: var(--gold-light);
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 2px solid var(--stone);
+  }
+  td { padding: 9px 14px; border-bottom: 1px solid rgba(255,255,255,0.07); color: var(--text); }
+  tr:hover td { background: rgba(255,255,255,0.04); }
+
+  /* ── WARNING / TIP CALLOUTS ── */
+  .callout {
+    padding: 16px 20px;
+    margin: 18px 0;
+    border-radius: 0;
+    font-size: 0.95rem;
+  }
+  .callout-warn {
+    background: rgba(224,92,75,0.14);
+    border-left: 3px solid var(--crimson);
+    color: #ffd0cb;
+  }
+  .callout-tip {
+    background: rgba(46,204,113,0.12);
+    border-left: 3px solid var(--green);
+    color: #b8f5d4;
+  }
+  .callout-info {
+    background: rgba(74,158,218,0.14);
+    border-left: 3px solid var(--blue);
+    color: #c8e8ff;
+  }
+  .callout-key {
+    background: rgba(240,180,41,0.12);
+    border-left: 3px solid var(--gold);
+    color: var(--gold-pale);
+  }
+  .callout-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 6px;
+    opacity: 1;
+    color: inherit;
+    font-weight: 700;
+  }
+
+  /* ── HERO TIER ── */
+  .tier-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .tier-label {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    width: 36px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .tier-S { color: #ffd666; }
+  .tier-A { color: #72e8a8; }
+  .tier-B { color: #90c8f0; }
+  .tier-C { color: #d4b0f8; }
+  .tier-bar {
+    flex: 1;
+    background: var(--dark4);
+    height: 28px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    font-size: 0.88rem;
+  }
+
+  /* ── RESOURCE ICONS ── */
+  .resource { display: inline-flex; align-items: center; gap: 5px; font-size: 0.88rem; }
+
+  /* ── GEAR TABLE COLORS ── */
+  .rarity-grey   { color: #c8ccd8; }
+  .rarity-green  { color: #72e8a8; }
+  .rarity-blue   { color: var(--blue-bright); }
+  .rarity-purple { color: #d4b0f8; }
+  .rarity-gold   { color: var(--gold-light); }
+  .rarity-red    { color: #ff8080; }
+
+  /* ── EVENT TAG ── */
+  .event-tag {
+    display: inline-block;
+    background: rgba(240,180,41,0.15);
+    border: 1px solid rgba(240,180,41,0.45);
+    color: var(--gold-pale);
+    padding: 2px 9px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    border-radius: 2px;
+    margin: 2px;
+  }
+  .event-tag.alliance { background: rgba(74,158,218,0.15); border-color: rgba(74,158,218,0.45); color: var(--blue-bright); }
+  .event-tag.solo { background: rgba(176,127,224,0.15); border-color: rgba(176,127,224,0.45); color: #d4b0f8; }
+  .event-tag.special { background: rgba(240,128,48,0.15); border-color: rgba(240,128,48,0.45); color: #ffb080; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    text-align: center;
+    margin: 40px 0;
+    position: relative;
+    color: var(--stone);
+    font-size: 1.2rem;
+    letter-spacing: 0.5em;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: calc(50% - 60px);
+    height: 1px;
+    background: var(--stone);
+  }
+  .divider::before { left: 0; }
+  .divider::after { right: 0; }
+
+  /* ── LINKS SECTION ── */
+  .resource-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+  .link-card {
+    background: var(--dark3);
+    border: 1px solid var(--stone);
+    padding: 18px 20px;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: block;
+  }
+  .link-card:hover { border-color: var(--gold); background: var(--dark4); }
+  .link-card-title { font-family: 'Cinzel', serif; color: var(--gold-light); font-size: 0.95rem; margin-bottom: 4px; }
+  .link-card-desc { color: var(--text); font-size: 0.85rem; }
+  .link-card-url { color: var(--gold); font-size: 0.75rem; margin-top: 6px; opacity: 0.85; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--stone);
+    margin-top: 60px;
+    padding: 28px 0;
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--gold); text-decoration: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .phase-meta { flex-direction: column; gap: 6px; }
+  }
+
+  /* ── SCROLL BEHAVIOR ── */
+  html { scroll-behavior: smooth; }
+
+  /* ── STICKY NAV ── */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    background: rgba(15,17,23,0.97);
+    border-bottom: 1px solid var(--stone);
+    z-index: 100;
+    padding: 10px 0;
+    backdrop-filter: blur(8px);
+    display: none;
+  }
+  @media (min-width: 700px) { .sticky-nav { display: block; } }
+  .sticky-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .sticky-inner::-webkit-scrollbar { display: none; }
+  .sticky-inner a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    padding: 4px 10px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+  }
+  .sticky-inner a:hover { color: #ffffff; border-color: rgba(74,158,218,0.4); }
+
+  /* ── PRIORITY BADGE ── */
+  .priority {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    padding: 1px 7px;
+    border-radius: 2px;
+    letter-spacing: 0.1em;
+    vertical-align: middle;
+    margin-left: 6px;
+  }
+  .p-high { background: rgba(139,26,26,0.4); color: #ff9999; border: 1px solid rgba(139,26,26,0.6); }
+  .p-med  { background: rgba(192,104,32,0.3); color: #ffcc88; border: 1px solid rgba(192,104,32,0.5); }
+  .p-low  { background: rgba(58,104,153,0.3); color: #88bbff; border: 1px solid rgba(58,104,153,0.5); }
+
+  /* ── AI LIVE INTEL PANEL ── */
+  .ai-panel {
+    background: linear-gradient(135deg, #0d1520 0%, #111827 100%);
+    border: 1px solid rgba(74,158,218,0.35);
+    border-top: 3px solid var(--blue);
+    margin: 32px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .ai-panel::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(74,158,218,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .ai-panel-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 24px 14px;
+    border-bottom: 1px solid rgba(74,158,218,0.2);
+    flex-wrap: wrap; gap: 10px;
+  }
+  .ai-panel-title { display: flex; align-items: center; gap: 10px; }
+  .ai-pulse {
+    width: 10px; height: 10px;
+    background: var(--green); border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(46,204,113,0.6);
+    animation: pulse-ring 2s infinite; flex-shrink: 0;
+  }
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 rgba(46,204,113,0.6); }
+    70% { box-shadow: 0 0 0 8px rgba(46,204,113,0); }
+    100% { box-shadow: 0 0 0 0 rgba(46,204,113,0); }
+  }
+  .ai-panel-title h2 { font-family: "Cinzel", serif; font-size: 1rem; color: #ffffff; letter-spacing: 0.08em; margin: 0; }
+  .ai-panel-title .live-badge {
+    font-family: "Cinzel", serif; font-size: 0.65rem; color: var(--green-bright);
+    letter-spacing: 0.2em; background: rgba(46,204,113,0.1);
+    border: 1px solid rgba(46,204,113,0.3); padding: 2px 8px; border-radius: 2px;
+  }
+  .ai-refresh-btn {
+    background: rgba(74,158,218,0.15); border: 1px solid rgba(74,158,218,0.4);
+    color: var(--blue-bright); font-family: "Cinzel", serif; font-size: 0.7rem;
+    letter-spacing: 0.15em; padding: 6px 16px; cursor: pointer; transition: all 0.2s;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .ai-refresh-btn:hover { background: rgba(74,158,218,0.28); color: #fff; }
+  .ai-refresh-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+  .ai-refresh-btn .spin-icon { display: inline-block; transition: transform 0.3s; }
+  .ai-refresh-btn.loading .spin-icon { animation: spin 1s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .ai-content { padding: 22px 24px; min-height: 120px; }
+  .ai-loading {
+    display: flex; align-items: center; gap: 14px;
+    color: var(--text-dim); font-style: italic; padding: 20px 0;
+  }
+  .ai-loading-dots span {
+    display: inline-block; width: 7px; height: 7px;
+    background: var(--blue); border-radius: 50%; margin: 0 2px;
+    animation: dotbounce 1.2s infinite;
+  }
+  .ai-loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .ai-loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes dotbounce { 0%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-7px)} }
+  .ai-result { display: none; }
+  .ai-result.visible { display: block; }
+  .ai-result-body {
+    font-size: 0.97rem; line-height: 1.85; color: var(--text);
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+    padding: 18px 20px;
+  }
+  .ai-result-body h3 { font-family: "Cinzel", serif; font-size: 1rem; color: var(--gold-light); margin: 16px 0 8px; }
+  .ai-result-body h3:first-child { margin-top: 0; }
+  .ai-result-body strong { color: #fff; }
+  .ai-result-body ul { padding-left: 20px; }
+  .ai-result-body li { margin-bottom: 5px; }
+  .ai-result-body p { margin-bottom: 10px; }
+  .ai-timestamp { color: var(--text-dim); font-size: 0.78rem; margin-top: 14px; font-style: italic; }
+  .ai-error {
+    color: #ffb0a8; background: rgba(224,92,75,0.1);
+    border: 1px solid rgba(224,92,75,0.25); padding: 14px 18px; font-size: 0.9rem; display: none;
+  }
+  .ai-error.visible { display: block; }
+  /* Ask AI */
+  .ai-ask-section {
+    border-top: 1px solid rgba(74,158,218,0.2);
+    padding: 16px 24px 20px; background: rgba(0,0,0,0.18);
+  }
+  .ai-ask-label {
+    font-family: "Cinzel", serif; font-size: 0.68rem; letter-spacing: 0.2em;
+    color: var(--text-dim); text-transform: uppercase; margin-bottom: 10px;
+  }
+  .ai-ask-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .ai-ask-input {
+    flex: 1; min-width: 200px;
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(74,158,218,0.3);
+    color: var(--text); font-family: "Crimson Pro", serif; font-size: 1rem;
+    padding: 8px 14px; outline: none; transition: border-color 0.2s;
+  }
+  .ai-ask-input:focus { border-color: var(--blue-bright); }
+  .ai-ask-input::placeholder { color: var(--text-dim); }
+  .ai-ask-btn {
+    background: var(--blue); border: none; color: #fff;
+    font-family: "Cinzel", serif; font-size: 0.72rem; letter-spacing: 0.15em;
+    padding: 8px 20px; cursor: pointer; transition: all 0.2s; white-space: nowrap;
+  }
+  .ai-ask-btn:hover { background: var(--blue-bright); color: var(--dark); }
+  .ai-ask-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .ai-quick-questions { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+  .ai-quick-btn {
+    background: transparent; border: 1px solid rgba(74,158,218,0.22);
+    color: var(--text-dim); font-family: "Crimson Pro", serif; font-size: 0.82rem;
+    padding: 4px 12px; cursor: pointer; transition: all 0.2s; border-radius: 20px;
+  }
+  .ai-quick-btn:hover { border-color: var(--blue-bright); color: var(--blue-bright); background: rgba(74,158,218,0.08); }
+  .ai-chat-history {
+    margin-top: 14px; display: flex; flex-direction: column; gap: 10px;
+    max-height: 420px; overflow-y: auto;
+    scrollbar-width: thin; scrollbar-color: var(--stone) transparent;
+  }
+  .ai-chat-msg { padding: 10px 14px; font-size: 0.93rem; line-height: 1.65; border-radius: 2px; }
+  .ai-chat-msg.user {
+    background: rgba(74,158,218,0.1); border: 1px solid rgba(74,158,218,0.22);
+    color: var(--blue-bright); align-self: flex-end; max-width: 85%; font-style: italic;
+  }
+  .ai-chat-msg.assistant {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); color: var(--text);
+  }
+  .ai-chat-msg.assistant strong { color: #fff; }
+  .ai-chat-msg.assistant ul { padding-left: 18px; }
+  .ai-chat-msg.assistant li { margin-bottom: 4px; }
+  .ai-chat-thinking {
+    color: var(--text-dim); font-style: italic; font-size: 0.88rem;
+    display: flex; align-items: center; gap: 8px; padding: 8px 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <div class="sticky-inner">
+    <a href="#live-intel" style="color:var(--green-bright)">⚡ Live Events</a>
+    <a href="#overview">Overview</a>
+    <a href="#city">City Building</a>
+    <a href="#heroes">Heroes</a>
+    <a href="#gear">Hero Gear</a>
+    <a href="#troops">Troops</a>
+    <a href="#island">Island</a>
+    <a href="#research">Research</a>
+    <a href="#events">Events</a>
+    <a href="#bear">Bear Hunt</a>
+    <a href="#kvk">KvK</a>
+    <a href="#alliance">Alliance</a>
+    <a href="#progression">Progression</a>
+    <a href="#ftp">F2P Tips</a>
+    <a href="#resources">Resources</a>
+  </div>
+</nav>
+
+<header>
+  <span class="crown">👑</span>
+  <div style="font-family:'Cinzel',serif; font-size:0.85rem; letter-spacing:0.4em; color:var(--text-dim); text-transform:uppercase; margin-bottom:8px;">DarkKnights Guide</div>
+  <h1>KINGSHOT</h1>
+  <div class="subtitle">Complete Strategy Guide &amp; Reference · 2026</div>
+  <p style="color:var(--text-dim); font-size:0.95rem; max-width:600px; margin:0 auto 16px;">
+    A comprehensive guide to building your civilization, commanding heroes, and dominating your kingdom.
+    Compiled from community Discord, strategy sites, and experienced governors.
+  </p>
+  <div class="header-badges">
+    <span class="badge">Updated 2026</span>
+    <span class="badge">All Phases</span>
+    <span class="badge">F2P Friendly</span>
+    <span class="badge">Century Games</span>
+  </div>
+</header>
+
+
+<div class="container">
+<!-- ══ AI LIVE EVENT INTEL ══ -->
+<div class="ai-panel" id="live-intel">
+  <div class="ai-panel-header">
+    <div class="ai-panel-title">
+      <div class="ai-pulse"></div>
+      <h2>⚡ LIVE EVENT INTEL</h2>
+      <span class="live-badge">AI POWERED</span>
+    </div>
+    <button class="ai-refresh-btn" id="refreshBtn" onclick="fetchCurrentEvent()">
+      <span class="spin-icon">↻</span> REFRESH
+    </button>
+  </div>
+
+  <div class="ai-content">
+    <div class="ai-loading" id="mainLoading">
+      <div class="ai-loading-dots"><span></span><span></span><span></span></div>
+      <span>Scanning current Kingshot events &amp; strategy guides…</span>
+    </div>
+    <div class="ai-error" id="mainError"></div>
+    <div class="ai-result" id="mainResult">
+      <div class="ai-result-body" id="mainResultBody"></div>
+      <div class="ai-timestamp" id="mainTimestamp"></div>
+    </div>
+  </div>
+
+  <div class="ai-ask-section">
+    <div class="ai-ask-label">⚔ Ask the Strategy AI</div>
+    <div class="ai-ask-row">
+      <input class="ai-ask-input" id="askInput" type="text"
+        placeholder="e.g. What's the best hero lineup for this week's event?"
+        onkeydown="if(event.key==='Enter') askAI()" />
+      <button class="ai-ask-btn" id="askBtn" onclick="askAI()">ASK →</button>
+    </div>
+    <div class="ai-quick-questions">
+      <button class="ai-quick-btn" onclick="quickAsk('What are this week\'s active events in Kingshot?')">This week's events</button>
+      <button class="ai-quick-btn" onclick="quickAsk('What is the best strategy for the current Kingshot event?')">Best strategy now</button>
+      <button class="ai-quick-btn" onclick="quickAsk('What heroes should I use for the current Kingshot event?')">Hero picks</button>
+      <button class="ai-quick-btn" onclick="quickAsk('What rewards can I earn in the current Kingshot events?')">Event rewards</button>
+      <button class="ai-quick-btn" onclick="quickAsk('Any tips for F2P players for the current event in Kingshot?')">F2P tips</button>
+    </div>
+    <div class="ai-chat-history" id="chatHistory"></div>
+  </div>
+</div>
+</div>
+
+<div class="container">
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-grid">
+      <a href="#live-intel">⚡ Live Event Intel</a>
+      <a href="#overview">🏰 Game Overview</a>
+      <a href="#city">🏗 City Building</a>
+      <a href="#heroes">⚔ Hero System</a>
+      <a href="#gear">🛡 Hero Gear</a>
+      <a href="#troops">🪖 Troop Guide</a>
+      <a href="#island">🏝 Island Guide</a>
+      <a href="#research">🔬 Academy &amp; Research</a>
+      <a href="#events">📅 Events Calendar</a>
+      <a href="#bear">🐻 Bear Hunt</a>
+      <a href="#kvk">⚔ Kingdom vs Kingdom</a>
+      <a href="#alliance">🤝 Alliance Play</a>
+      <a href="#progression">📈 Progression Roadmap</a>
+      <a href="#ftp">💰 F2P Strategy</a>
+      <a href="#resources">🔗 External Resources</a>
+    </div>
+  </div>
+
+  <!-- ════ OVERVIEW ════ -->
+  <section id="overview">
+    <div class="section-header">
+      <span class="section-icon">🏰</span>
+      <h2>Game Overview</h2>
+    </div>
+    <p>
+      <strong>Kingshot</strong> is a medieval idle strategy-survival game by <strong>Century Games</strong>. You're a Governor in a collapsed dynasty, tasked with rebuilding civilization — managing resources, training armies, recruiting heroes, and competing for dominance against other governors.
+    </p>
+    <div class="grid-2">
+      <div class="card card-gold">
+        <div class="card-title">Core Gameplay Loop</div>
+        <ul class="tips">
+          <li>Upgrade your <strong>Town Center</strong> to unlock buildings &amp; features</li>
+          <li>Build &amp; upgrade resource buildings for passive income</li>
+          <li>Recruit and level up heroes to lead armies</li>
+          <li>Train troops and participate in events for rewards</li>
+          <li>Join an alliance to access cooperative events</li>
+          <li>Compete in KvK (Kingdom vs Kingdom) for glory</li>
+        </ul>
+      </div>
+      <div class="card card-blue">
+        <div class="card-title">Key Currencies</div>
+        <ul class="tips">
+          <li><strong>Gems</strong> — Premium currency; save for Hero Roulette</li>
+          <li><strong>Gold / Food / Wood / Stone</strong> — Basic building materials</li>
+          <li><strong>Speedups</strong> — Time accelerators; save for events</li>
+          <li><strong>Forge Hammers</strong> — For Mythic gear upgrades (Bear Hunt source)</li>
+          <li><strong>Truegold</strong> — Late-game upgrade material (unlocks ~day 70+)</li>
+          <li><strong>Hero Shards / Keys</strong> — For summoning &amp; ascending heroes</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout callout-key">
+      <span class="callout-label">🔑 The Golden Rule</span>
+      Don't spread resources thin. Focus on <strong>3 core heroes</strong>, save <strong>gems for Hero Roulette</strong>, and save <strong>speedups for event windows</strong>. These three habits separate top players from everyone else.
+    </div>
+  </section>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <!-- ════ CITY BUILDING ════ -->
+  <section id="city">
+    <div class="section-header">
+      <span class="section-icon">🏗</span>
+      <h2>City Building Guide</h2>
+    </div>
+
+    <h3>Building Priority Order</h3>
+    <p>Always upgrade <strong>Town Center (TC)</strong> first — it gates everything else. You cannot upgrade any building above your current TC level.</p>
+
+    <div class="grid-2">
+      <div class="card card-gold">
+        <div class="card-title">🥇 Top Priority Buildings</div>
+        <ul class="tips">
+          <li><strong>Town Center</strong> — Always upgrade first; unlocks all other buildings</li>
+          <li><strong>Academy</strong> — Start research immediately; construction speed first</li>
+          <li><strong>Storehouse</strong> — Protects resources from raids; upgrade before resource wall</li>
+          <li><strong>Hospital / Infirmary</strong> — Recovers wounded troops instead of losing them</li>
+          <li><strong>Barracks / Training Camps</strong> — Needed for troop training &amp; upgrades</li>
+        </ul>
+      </div>
+      <div class="card card-blue">
+        <div class="card-title">🥈 Secondary Buildings</div>
+        <ul class="tips">
+          <li><strong>Farms, Lumber Mills, Quarries, Mines</strong> — Passive resource income</li>
+          <li><strong>Command Center</strong> — Unlocks march capacity upgrades</li>
+          <li><strong>Embassy</strong> — Alliance reinforcements &amp; help features</li>
+          <li><strong>War Academy</strong> — Combat research bonuses</li>
+          <li><strong>Watchtower</strong> — Intel Missions (hero XP, gear scraps)</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Builder Management</h3>
+    <div class="card card-green">
+      <ul class="tips">
+        <li>You start with <strong>1 builder</strong>. Never leave it idle.</li>
+        <li>The <strong>2nd builder queue</strong> (purchased with gems) is the only non-Hero-Roulette gem purchase worth making.</li>
+        <li>Do short upgrades while active, long upgrades (8–12h+) while sleeping or away.</li>
+        <li>Use <strong>Free Speedups</strong> from events and missions to clear upgrade queues.</li>
+      </ul>
+    </div>
+
+    <h3>Building Level Caps</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Building</th><th>Standard Max</th><th>Truegold Max</th><th>Notes</th></tr>
+        <tr><td>Town Center</td><td>30</td><td>TG8 (≈50 stages)</td><td>Gates all other buildings</td></tr>
+        <tr><td>Training Camps</td><td>30</td><td>TG8</td><td>Higher level = more troop training</td></tr>
+        <tr><td>Infirmary</td><td>30</td><td>TG8</td><td>More capacity = fewer troop deaths</td></tr>
+        <tr><td>Embassy</td><td>30</td><td>TG8</td><td>—</td></tr>
+        <tr><td>Kitchen, Houses, Clinic</td><td>10</td><td>—</td><td>Max is 10</td></tr>
+        <tr><td>Defense Towers, Guard Stations</td><td>10</td><td>—</td><td>Max is 10</td></tr>
+      </table>
+    </div>
+
+    <div class="callout callout-warn">
+      <span class="callout-label">⚠ The TC 24 Wall</span>
+      Upgrade costs roughly <strong>double at TC 24</strong>. If you haven't been hoarding speedups and running a farm account before then, you'll stall here for weeks. Start preparing at TC 20.
+    </div>
+
+    <h3>Governor Gear &amp; Charms</h3>
+    <div class="grid-2">
+      <div class="card card-purple">
+        <div class="card-title">Governor Gear (Unlocks at TC 22)</div>
+        <p>Provides Attack &amp; Defense bonuses to your Governor. Can be upgraded up to <strong>level 26</strong>. Found in your Profile section.</p>
+      </div>
+      <div class="card card-purple">
+        <div class="card-title">Governor Charms (Unlocks at TC 25)</div>
+        <p>Increases <strong>Lethality &amp; Health</strong> — the two most important combat stats. Max level 22. Craft from the Profile section using Charm Items earned in events like Eternity's Reach.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <!-- ════ HEROES ════ -->
+  <section id="heroes">
+    <div class="section-header">
+      <span class="section-icon">⚔</span>
+      <h2>Hero System</h2>
+    </div>
+
+    <p>Heroes are the most important progression system in Kingshot. They lead your troops, define your combat power, and unlock game modes. <strong>Focus on 3 core heroes only.</strong></p>
+
+    <h3>Hero Development Methods</h3>
+    <div class="grid-3">
+      <div class="card card-gold">
+        <div class="card-title">⬆ Leveling (XP)</div>
+        <p>Use <strong>Hero XP Potions</strong> from Intel Missions and events. Increases base stats (ATK/DEF/HP) and troop march capacity. Max level is <strong>80</strong> (requires TC 26).</p>
+      </div>
+      <div class="card card-gold">
+        <div class="card-title">⭐ Ascending (Stars)</div>
+        <p>Use <strong>Hero Shards &amp; Keys</strong> from Hero Roulette. Ascending unlocks new skills, improves existing ones, and boosts base stats significantly. Always prioritize ascending your 3 main heroes.</p>
+      </div>
+      <div class="card card-gold">
+        <div class="card-title">🔧 Skill Upgrades</div>
+        <p>Use <strong>Hero Skill Tomes</strong> to upgrade individual skills. Improves damage multipliers, cooldowns, and buff durations. Required to unlock higher skill tiers alongside hero level.</p>
+      </div>
+    </div>
+
+    <h3>Hero Roles</h3>
+    <div class="grid-3">
+      <div class="card card-green">
+        <div class="card-title">🗡 Rally Leader</div>
+        <p>Leads alliances in Bear Hunt, Castle Battle, KvK. Their gear and skills define rally power. Needs high hero level, maxed gear, and strong widget investment.</p>
+      </div>
+      <div class="card card-blue">
+        <div class="card-title">🤝 Rally Joiner</div>
+        <p>Joins someone else's rally and contributes troops. Hero gear does <strong>NOT</strong> apply when joining — only troop count (based on hero level) matters. Focus on getting joiners to 4 stars for their passive skills.</p>
+      </div>
+      <div class="card card-purple">
+        <div class="card-title">🛡 Garrison</div>
+        <p>Defends a building or castle. Different stat weightings apply. Key garrison heroes have specific skills that activate while defending.</p>
+      </div>
+    </div>
+
+    <h3>Hero Classes &amp; Counters</h3>
+    <div class="card card-red">
+      <div class="card-title">Rock-Paper-Scissors System</div>
+      <div class="grid-3" style="margin-top:12px;">
+        <div><strong>🐴 Cavalry</strong><br><span style="color:var(--text-dim)">Counters Archers (+20% rewards, 30% faster kills)</span></div>
+        <div><strong>🏹 Archer</strong><br><span style="color:var(--text-dim)">Counters Infantry (highest DPS overall)</span></div>
+        <div><strong>🛡 Infantry</strong><br><span style="color:var(--text-dim)">Counters Cavalry (frontline tank)</span></div>
+      </div>
+    </div>
+
+    <h3>Hero Generations</h3>
+    <p>Heroes are released in generations as your kingdom ages. Newer generations have dramatically higher base stats.</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Generation</th><th>ATK/DEF Bonus (Max)</th><th>Availability</th><th>Notes</th></tr>
+        <tr><td>Gen 1</td><td>~100%</td><td>Day 1+</td><td>Zoe (Infantry), Saul (Archer)</td></tr>
+        <tr><td>Gen 2</td><td>~150%</td><td>Day 14+</td><td>Quinn, Howard</td></tr>
+        <tr><td>Gen 3</td><td>~220%</td><td>Day 25+</td><td>Chenko, Amadeus</td></tr>
+        <tr><td>Gen 4</td><td>~320%</td><td>Day 40+</td><td>Rosa, Alcar, Diana</td></tr>
+        <tr><td>Gen 5</td><td>~444%</td><td>Day 60+</td><td>Most powerful — budget Mythic Shards early if competing</td></tr>
+      </table>
+    </div>
+
+    <h3>Skill Types</h3>
+    <div class="grid-2">
+      <div class="card card-blue">
+        <div class="card-title">🗺 Expedition Skills</div>
+        <p>Active during Rallies and open-world combat. Provide army-wide buffs. Scale with <strong>Widgets</strong>. These are what matter in major events.</p>
+      </div>
+      <div class="card card-purple">
+        <div class="card-title">⚔ Conquest Skills</div>
+        <p>Governs performance in PvP Arena and Conquest game modes. Focus on burst damage and crowd control. Less relevant for large-scale war events.</p>
+      </div>
+    </div>
+
+    <h3>Widgets (Multiplicative Bonuses)</h3>
+    <div class="callout callout-info">
+      <span class="callout-label">ℹ Widget System</span>
+      Widgets provide <strong>multiplicative bonuses up to +15%</strong> at max level — making them one of the most efficient power upgrades in the game. There are two types: <strong>Rally Squad Widgets</strong> (only active when hero leads a rally) and <strong>Defender Squad Widgets</strong> (only active when garrisoning). Use the right widget type for your hero's role.
+    </div>
+
+    <h3>Notable Heroes (Community Recommended)</h3>
+    <div class="tier-row"><span class="tier-label tier-S">S</span><div class="tier-bar"><strong>Amadeus</strong> (Infantry rally, Gen 3/4 — undisputed offense king) &nbsp;|&nbsp; <strong>Rosa</strong> (Gen 4 support, army-wide debuff cleanse) &nbsp;|&nbsp; <strong>Zoe</strong> (F2P Infantry, best free option)</div></div>
+    <div class="tier-row"><span class="tier-label tier-A">A</span><div class="tier-bar"><strong>Chenko</strong> (SR Cavalry, +25% Lethality aura — meta joiner) &nbsp;|&nbsp; <strong>Jabel</strong> (Cavalry garrison) &nbsp;|&nbsp; <strong>Saul</strong> (Archer + construction buffs)</div></div>
+    <div class="tier-row"><span class="tier-label tier-B">B</span><div class="tier-bar"><strong>Quinn</strong> (Gen 2 Archer, solid joiner) &nbsp;|&nbsp; <strong>Howard</strong> (Gen 2 Infantry garrison) &nbsp;|&nbsp; <strong>Helga</strong> (Spender Infantry alternative)</div></div>
+    <div class="tier-row"><span class="tier-label tier-C">C</span><div class="tier-bar">Gen 1 heroes beyond what's needed to function early game</div></div>
+  </section>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <!-- ════ HERO GEAR ════ -->
+  <section id="gear">
+    <div class="section-header">
+      <span class="section-icon">🛡</span>
+      <h2>Hero Gear Guide</h2>
+    </div>
+
+    <p>Hero Gear is the <strong>single biggest power multiplier</strong> in Kingshot. Fully upgraded gear can add millions of troop power. But gear only applies when you <em>lead</em> a rally — not when you join one.</p>
+
+    <h3>Gear Rarity Tiers &amp; Max Levels</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Rarity</th><th>Max Level</th><th>Notes</th></tr>
+        <tr><td class="rarity-grey">⬜ Grey (Common)</td><td>20</td><td>Merge into higher tiers</td></tr>
+        <tr><td class="rarity-green">🟩 Green (Uncommon)</td><td>40</td><td>—</td></tr>
+        <tr><td class="rarity-blue">🟦 Blue (Rare)</td><td>60</td><td>—</td></tr>
+        <tr><td class="rarity-purple">🟪 Purple (Epic)</td><td>80</td><td>⚠ Don't consume Epic for XP — it's hard to get</td></tr>
+        <tr><td class="rarity-gold">🟨 Mythic (Gold)</td><td>100 + Mastery Forging</td><td>Mastery Forging unlocks at Lv 20; uses Forgehammers for 1.1x–2x+ multipliers</td></tr>
+        <tr><td class="rarity-red">🟥 Red (Endgame)</td><td>200</td><td>Requires Mythic Lv 100 + Mastery 10 + 2 extra Mythics. Unlocks ~day 40</td></tr>
+      </table>
+    </div>
+
+    <h3>Gear Stat Priority</h3>
+    <div class="card card-gold">
+      <div class="card-title">Priority Order (Most to Least Important)</div>
+      <ol style="padding-left:20px; line-height:2; color: var(--text);">
+        <li><strong>Infantry Health</strong> (Chest &amp; Gloves) — Keeps frontline alive longer</li>
+        <li><strong>Archer Lethality</strong> — Highest damage dealer; lethality = final damage multiplier</li>
+        <li><strong>Cavalry Lethality</strong></li>
+        <li><strong>Infantry Lethality</strong></li>
+        <li><strong>Archer Health</strong></li>
+        <li><strong>Cavalry Health</strong></li>
+      </ol>
+    </div>
+
+    <h3>Upgrade Strategy</h3>
+    <ul class="tips">
+      <li>Pick your <strong>main march (top 3 heroes)</strong> before upgrading any gear</li>
+      <li><strong>Strip gear</strong> from heroes outside your main march and reforge it for resources</li>
+      <li>Don't level gear equally — focus priority pieces first</li>
+      <li><strong>Infantry Tank</strong>: boost Health. <strong>Cavalry &amp; Archers</strong>: boost Lethality</li>
+      <li>Push main march gear to <strong>Lv 80–100</strong>; secondary heroes to Lv 40–60</li>
+      <li><strong>Reforge</strong> (not Consume) leveled gear you don't need to recover full resources</li>
+    </ul>
+
+    <div class="callout callout-tip">
+      <span class="callout-label">💡 Joiner Hero Gear</span>
+      Hero gear doesn't apply when joining a rally. What matters for joiners is: (1) <strong>troop count</strong> from hero XP level, and (2) passive skills like Chenko's Stand of Arms aura. Get joiner heroes to <strong>4 stars</strong> to unlock their key passive — don't waste gear resources on them.
+    </div>
+  </section>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <!-- ════ TROOPS ════ -->
+  <section id="troops">
+    <div class="section-header">
+      <span class="section-icon">🪖</span>
+      <h2>Troop Guide</h2>
+    </div>
+
+    <h3>Troop Types</h3>
+    <div class="grid-3">
+      <div class="card card-green">
+        <div class="card-title">🛡 Infantry</div>
+        <p>Frontline tanks. Takes damage to protect your Archers and Cavalry. Highest health pool, lowest DPS. Essential for survivability.</p>
+      </div>
+      <div class="card card-blue">
+        <div class="card-title">🏹 Archers</div>
+        <p>Highest DPS in the game. Ideal for Bear Hunt and open-world combat. Should make up majority of your march formation in late game.</p>
+      </div>
+      <div class="card card-purple">
+        <div class="card-title">🐴 Cavalry</div>
+        <p>Mobile flankers with strong counter-class bonuses vs Archers. Mid-tier damage. Useful in specific counter scenarios.</p>
+      </div>
+    </div>
+
+    <h3>Optimal Troop Formations for Bear Hunt</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Stage</th><th>Infantry</th><th>Cavalry</th><th>Archers</th></tr>
+        <tr><td>Gen 1 Heroes</td><td>10%</td><td>30%</td><td>60%</td></tr>
+        <tr><td>Gen 2 Heroes</td><td>10%</td><td>20%</td><td>70%</td></tr>
+        <tr><td>Gen 3 Heroes</td><td>10%</td><td>10%</td><td>80%</td></tr>
+        <tr><td>Gen 4–5 (Universal)</td><td><strong>1%</strong></td><td><strong>10%</strong></td><td><strong>89%</strong></td></tr>
+      </table>
+    </div>
+    <p>The <strong>1/10/89 formation</strong> is the gold standard for maximum Bear Hunt damage once you have Gen 4+ heroes.</p>
+
+    <h3>Training Tips</h3>
+    <ul class="tips">
+      <li>Always keep training camps active — never let them sit idle</li>
+      <li>Use <strong>Troop Training Events</strong> with 2x speed items for maximum efficiency</li>
+      <li>Train troops non-stop; a reserve of troops is your biggest KvK asset</li>
+      <li>Higher TC level unlocks higher-tier troops (T11 Archers are the late-game standard)</li>
+      <li>Keep your <strong>Hospital / Infirmary</strong> upgraded — wounded troops are recoverable, dead troops are not</li>
+    </ul>
+  </section>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <!-- ════ ISLAND ════ -->
+  <section id="island">
+    <div class="section-header">
+      <span class="section-icon">🏝</span>
+      <h2>Island Guide</h2>
+    </div>
+
+    <p>The Island is a separate development zone that provides passive combat bonuses to your troops and heroes. It's often overlooked by newer players but provides significant stat multipliers.</p>
+
+    <h3>Island Building Priority</h3>
+    <div class="card card-gold">
+      <div class="card-title">Priority Order</div>
+      <ul class="tips">
+        <li><strong>Infantry Defense buildings first</strong> — increases health/survivability of frontline</li>
+        <li><strong>Archer Attack buildings second</strong> — Archers are your main DPS source</li>
+        <li>Cavalry buildings third</li>
+        <li>Match Island upgrades to your primary troop composition</li>
+      </ul>
+    </div>
+
+    <div class="callout callout-info">
+      <span class="callout-label">ℹ Island Synergy</span>
+      Island stat priorities should mirror your Gear, Research, War Academy, and Charm priorities. The same stat priority applies everywhere: <strong>Infantry Health → Archer Lethality → Cavalry Lethality → Infantry Lethality → Archer Health → Cavalry Health</strong>.
+    </div>
+
+    <h3>Island Resources &amp; Activities</h3>
+    <ul class="tips">
+      <li>Complete Island missions and quests for bonus materials</li>
+      <li>Participate in Island-specific events when they occur</li>
+      <li>Coordinate with alliance for Island territory control events</li>
+      <li>Use Island buildings to supplement power gains when Town Center upgrades slow down</li>
+    </ul>
+  </section>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <!-- ════ RESEARCH ════ -->
+  <section id="research">
+    <div class="section-header">
+      <span class="section-icon">🔬</span>
+      <h2>Academy &amp; Research</h2>
+    </div>
+
+    <h3>Research Priority by Phase</h3>
+    <div class="grid-2">
+      <div class="card card-green">
+        <div class="card-title">🌱 Early Game (TC 1–15)</div>
+        <ul class="tips">
+          <li><strong>Construction Speed</strong> — First priority; saves hours of upgrade time</li>
+          <li><strong>Resource Production</strong> — Keeps resource income steady</li>
+          <li>Training Speed — Reduce troop training time</li>
+        </ul>
+      </div>
+      <div class="card card-blue">
+        <div class="card-title">⚔ Mid to Late Game (TC 16+)</div>
+        <ul class="tips">
+          <li><strong>Gathering Speed &amp; March Capacity</strong></li>
+          <li><strong>Combat Research</strong> — Critical before KvK</li>
+          <li>Hero-specific research unlocks</li>
+          <li>War Academy bonuses (Archer ATK/Lethality etc.)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout callout-tip">
+      <span class="callout-label">💡 Pro Tip</span>
+      Always have the Academy working on something. Research stacks with all other bonuses. Use the Kingshot Calculator at <strong>kingshotcalculator.com</strong> to plan your build order and time your upgrades efficiently.
+    </div>
+  </section>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <!-- ════ EVENTS ════ -->
+  <section id="events">
+    <div class="section-header">
+      <span class="section-icon">📅</span>
+      <h2>Events Guide</h2>
+    </div>
+
+    <p>Events are the fastest way to accelerate progression. <strong>Never use speedups outside of event windows</strong> — speedups used during a Construction Event earn 3x+ rewards vs. using them randomly.</p>
+
+    <h3>Event Types</h3>
+    <div style="margin-bottom:20px;">
+      <p><strong>Solo Events:</strong></p>
+      <div style="margin:8px 0 16px;">
+        <span class="event-tag solo">Hero Roulette</span>
+        <span class="event-tag solo">Hall of Governors</span>
+        <span class="event-tag solo">Fishing</span>
+        <span class="event-tag solo">Eternity's Reach</span>
+        <span class="event-tag solo">Working Overtime</span>
+        <span class="event-tag solo">Power Up</span>
+        <span class="event-tag solo">Desert Trial</span>
+        <span class="event-tag solo">All Out (Kill Event)</span>
+        <span class="event-tag solo">City Development</span>
+        <span class="event-tag solo">War Preparation</span>
+        <span class="event-tag solo">Strongest Governor</span>
+      </div>
+      <p><strong>Alliance Events:</strong></p>
+      <div style="margin:8px 0 16px;">
+        <span class="event-tag alliance">Bear Hunt (Pitfall)</span>
+        <span class="event-tag alliance">Swordland Showdown</span>
+        <span class="event-tag alliance">Alliance Championship</span>
+        <span class="event-tag alliance">Alliance Mobilization</span>
+        <span class="event-tag alliance">Tri-Alliance Clash</span>
+        <span class="event-tag alliance">Alliance Brawl</span>
+        <span class="event-tag alliance">Sanctuary Battles</span>
+        <span class="event-tag alliance">Viking Vengeance</span>
+        <span class="event-tag alliance">Cesare's Fury</span>
+      </div>
+      <p><strong>Major Events:</strong></p>
+      <div style="margin:8px 0;">
+        <span class="event-tag special">Kingdom of Power (KvK)</span>
+        <span class="event-tag special">King's Castle Battle</span>
+        <span class="event-tag special">Hall of Heroes</span>
+        <span class="event-tag special">Kingdom Feast</span>
+        <span class="event-tag special">Merchant Empire</span>
+      </div>
+    </div>
+
+    <h3>Post-KvK Event Calendar</h3>
+    <p style="color:var(--text-dim); font-size:0.9rem;">The following cycle repeats after your kingdom completes its first KvK event:</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Event</th><th>Type</th><th>Key Reward / Purpose</th></tr>
+        <tr><td>Kingdom of Power</td><td><span class="event-tag special">Major</span></td><td>Kingdom Coins, Truegold, Mythic Shards — every ~4 weeks</td></tr>
+        <tr><td>All Out (Kill Event)</td><td><span class="event-tag solo">Solo</span></td><td>Points from eliminating enemy troops</td></tr>
+        <tr><td>Strongest Governor</td><td><span class="event-tag solo">Solo</span></td><td>Power ranking rewards</td></tr>
+        <tr><td>Alliance Brawl / Mobilization</td><td><span class="event-tag alliance">Alliance</span></td><td>Alliance points, resources</td></tr>
+        <tr><td>Swordland Showdown</td><td><span class="event-tag alliance">Alliance</span></td><td>Tokens → Swordland Shop items</td></tr>
+        <tr><td>Bear Hunt</td><td><span class="event-tag alliance">Alliance</span></td><td>Forge Hammers (recurring, every 2 days)</td></tr>
+        <tr><td>Eternity's Reach</td><td><span class="event-tag solo">Solo</span></td><td>Charm Items — critical for F2P Charm grind</td></tr>
+        <tr><td>Hall of Heroes</td><td><span class="event-tag special">Major</span></td><td>Hero Shards, ranking rewards</td></tr>
+      </table>
+    </div>
+
+    <h3>Growth Missions (5-Day Events)</h3>
+    <div class="card card-green">
+      <p>A 5-day event where daily missions unlock progressively. Complete them for significant rewards — most tasks align with regular gameplay (like "Upgrade TC to Level X"). Never miss Growth Mission events — the rewards are the best return-per-effort in the game.</p>
+    </div>
+
+    <h3>Eternity's Reach</h3>
+    <div class="card card-purple">
+      <p>Stage-based solo event that awards <strong>Charm Items</strong> — the primary resource for Charm upgrades. With the right hero composition, F2P players can reach the leaderboard. Prioritize this event to power up your Charms, which provide massive late-game combat stat multipliers.</p>
+    </div>
+  </section>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <!-- ════ BEAR HUNT ════ -->
+  <section id="bear">
+    <div class="section-header">
+      <span class="section-icon">🐻</span>
+      <h2>Bear Hunt (Pitfall Event)</h2>
+    </div>
+
+    <div class="callout callout-warn">
+      <span class="callout-label">⚠ Critical Warning</span>
+      <strong>Never miss Bear Hunt.</strong> Forge Hammers (required for Mythic gear upgrades) have no substitute source. Missing Bear Hunts permanently lags your gear progression behind other players.
+    </div>
+
+    <h3>How It Works</h3>
+    <ul class="tips">
+      <li>Scheduled by R4/R5 alliance leaders — runs every <strong>2 days</strong> with 2 trap slots</li>
+      <li>Before the event: complete Intel Missions to gather <strong>Arrowheads</strong> and donate to the Bear Trap to increase alliance-wide attack multiplier</li>
+      <li>Event runs for exactly <strong>30 minutes</strong>; final rally can be called 5 min before end</li>
+      <li>Rewards are based on personal damage dealt and alliance total contribution</li>
+      <li>Building Placement: The Bear Trap can be placed anywhere within Alliance territory</li>
+    </ul>
+
+    <h3>Rally Leader Setup</h3>
+    <ul class="tips">
+      <li>Use maximum Archer-heavy formation (1/10/89 for Gen 4+)</li>
+      <li>Gear your rally leader fully (gear <strong>only matters when leading</strong>, not joining)</li>
+      <li>Prioritize Archer Lethality and Archer Attack from all sources: Gear, Island, Research, Charms, Governor Gear</li>
+      <li>Check heroes and troops of joiners before starting — remove anyone with wrong bonuses</li>
+      <li>Use secondary marches with heroes like Chenko to boost other rallies' Lethality</li>
+    </ul>
+
+    <h3>Alliance Management (R4/R5 Tips)</h3>
+    <div class="card card-blue">
+      <p>Poll members for best time slots and trigger both Trap 1 and Trap 2 at different times to maximize participation. Group rally leaders tightly around the Bear Trap for visual organization.</p>
+      <p style="margin-top:10px;"><strong>Solving Instant-Fill Problem (Formula):</strong><br>
+        Take Rally Capacity (e.g., 1,132,210) → Subtract Rally Leader's Squad Capacity (e.g., 162,210) → Divide remaining by number of expected joiners → Set this as the joiner troop limit. This distributes damage fairly across all members.
+      </p>
+    </div>
+
+    <h3>Joiner Tips</h3>
+    <ul class="tips">
+      <li>Hero gear doesn't apply as a joiner — focus on troop count via hero XP level</li>
+      <li>Get joiner heroes (especially Chenko) to <strong>4 stars</strong> to unlock their key passive skill</li>
+      <li>Chenko's "Stand of Arms" (+Lethality aura) is one of the best joiner skills in the game</li>
+      <li>Respect alliance joiner troop limits — breaking them hurts collective damage</li>
+    </ul>
+  </section>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <!-- ════ KVK ════ -->
+  <section id="kvk">
+    <div class="section-header">
+      <span class="section-icon">⚔</span>
+      <h2>Kingdom vs Kingdom (KvK)</h2>
+    </div>
+
+    <p>KvK (also called Kingdom of Power) is the largest event in Kingshot — two kingdoms face off over multiple phases. Your kingdom becomes eligible when it reaches approximately <strong>day 70</strong>. It recurs every <strong>~4 weeks</strong>.</p>
+
+    <h3>Matchmaking</h3>
+    <div class="card card-blue">
+      <p>The system matches your kingdom with one of similar power, calculated from the <strong>top 100 players</strong> and server generation. Removing or unequipping gear does <em>not</em> affect matchmaking power. If no suitable match is found, your kingdom receives <strong>Matchmaking Bye Rewards</strong> instead.</p>
+    </div>
+
+    <h3>KvK Phases</h3>
+    <div class="phase">
+      <div class="phase-label">Phase 1 — 5 Days</div>
+      <div class="phase-title">Preparation Phase</div>
+      <div class="phase-meta">
+        <span class="meta-pill">Points via upgrades &amp; training</span>
+        <span class="meta-pill">Daily Phase Ranking Rewards</span>
+        <span class="meta-pill">Up to 5 State Medals</span>
+      </div>
+      <p>Earn points by upgrading buildings, training troops, and completing tasks. Unlock 3 Personal Reward Chests per day (final chest ≈ 200K points). Top 2000 players get <strong>daily Phase Ranking Rewards</strong>. Top 50 alliances get Alliance Phase Ranking Rewards.</p>
+    </div>
+    <div class="phase">
+      <div class="phase-label">Phase 2 — 12 Hours</div>
+      <div class="phase-title">Battle Phase</div>
+      <div class="phase-meta">
+        <span class="meta-pill">10:00–22:00 UTC</span>
+        <span class="meta-pill">Cross-Kingdom Teleporters unlock at 10:00</span>
+        <span class="meta-pill">6th State Medal from Castle Battle</span>
+      </div>
+      <p>The losing Preparation Phase kingdom defends; the winner attacks. Cross-Kingdom Teleporters unlock at 10:00 UTC. You only earn points attacking players within <strong>3 TC levels</strong> of you. Castle positions and King titles reset at 12:00 UTC for the Castle Battle.</p>
+    </div>
+
+    <h3>KvK Rewards Shop</h3>
+    <div class="card card-gold">
+      <p>Spend <strong>Kingdom Coins</strong> in the KvK Shop for exclusive items: Sky Guardian Avatar Frame, Truegold, Mythic General Hero Shards, and other high-value items. Prioritize Truegold and Hero Shards for maximum progression value.</p>
+    </div>
+
+    <h3>KvK Preparation Checklist</h3>
+    <ul class="tips">
+      <li>Hoard speedups — use them during Preparation Phase for construction/training points</li>
+      <li>Train troops leading up to KvK (Hospital must be full-capacity first)</li>
+      <li>Upgrade Storehouse before KvK — lose nothing above capacity to enemy raids</li>
+      <li>Coordinate with alliance on attack/defense assignments</li>
+      <li>Identify high-value rally targets and avoid punching above your power tier</li>
+      <li>Scout enemy cities before attacking — check if troops are away and gates are open</li>
+    </ul>
+  </section>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <!-- ════ ALLIANCE ════ -->
+  <section id="alliance">
+    <div class="section-header">
+      <span class="section-icon">🤝</span>
+      <h2>Alliance Guide</h2>
+    </div>
+
+    <div class="callout callout-key">
+      <span class="callout-label">🔑 Join an Alliance Immediately</span>
+      Joining an active alliance at day 1 gives access to: help-speed building boosts, Bear Hunt (your Forge Hammer source), Alliance Championship weekly events, Castle Battle rewards, and reinforcement support during attacks.
+    </div>
+
+    <h3>Alliance Ranks (R1–R5)</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Rank</th><th>Role</th><th>Key Responsibilities</th></tr>
+        <tr><td>R5</td><td>Leader</td><td>Full admin access, Bear Hunt scheduling, war declaration</td></tr>
+        <tr><td>R4</td><td>Officer</td><td>Schedules Bear Hunt traps, manages events, rally coordination</td></tr>
+        <tr><td>R3</td><td>Elite Member</td><td>Trusted veterans, help with rally coordination</td></tr>
+        <tr><td>R2</td><td>Member</td><td>Full event participation rights</td></tr>
+        <tr><td>R1</td><td>Recruit</td><td>Probationary period</td></tr>
+      </table>
+    </div>
+
+    <h3>Alliance Championship (Weekly Event)</h3>
+    <div class="card card-blue">
+      <p>A weekly competitive event between alliances. Follow your alliance's strategy for optimal results — coordination is key. The 2-1 win strategy (win the first two rounds, hold positions) is considered the gold standard for consistent placement rewards.</p>
+    </div>
+
+    <h3>Tri-Alliance Clash</h3>
+    <div class="card card-purple">
+      <p>Three alliances fight over map buildings for 1 hour (Saturday). Phases: Preparation (3 min) → Seize &amp; Conquer (17 min) → Garrison Occupation (20 min). The alliance with the most points wins. Use the Tri-Alliance Clash Map (available at kingshotguides.com) to plan your battle strategy.</p>
+    </div>
+
+    <h3>King's Castle Battle</h3>
+    <p>Occurs every 2 weeks. An alliance must hold the Castle for <strong>3 hours straight</strong> or have the longest total hold time within 6 hours. Winning grants your alliance the right to appoint the <strong>King</strong>, unlocking kingdom-wide buffs and exclusive cosmetics. This is one of the most important recurring alliance events.</p>
+  </section>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <!-- ════ PROGRESSION ROADMAP ════ -->
+  <section id="progression">
+    <div class="section-header">
+      <span class="section-icon">📈</span>
+      <h2>Progression Roadmap</h2>
+    </div>
+
+    <div class="phase">
+      <div class="phase-label">Phase 1 — Days 1–14</div>
+      <div class="phase-title">Foundation (TC 1–10)</div>
+      <div class="phase-meta">
+        <span class="meta-pill">Target: 500K–1M Power</span>
+        <span class="meta-pill">Goal: Rush to TC 10</span>
+      </div>
+      <ul class="tips">
+        <li>TC 7 unlocks second builder — buy it with gems (the #1 gem priority)</li>
+        <li>TC 8 unlocks higher-tier troops | TC 10 unlocks alliance features</li>
+        <li>Research Construction Speed first in Academy</li>
+        <li>Join an alliance immediately for help speed &amp; Bear Hunt access</li>
+        <li>Do NOT invest heavily in Gen 1 heroes beyond what's needed</li>
+        <li>Do NOT spend gems on anything except the 2nd builder right now</li>
+      </ul>
+    </div>
+
+    <div class="phase">
+      <div class="phase-label">Phase 2 — Days 14–40</div>
+      <div class="phase-title">Growth (TC 11–19)</div>
+      <div class="phase-meta">
+        <span class="meta-pill">Target: 2M–5M Power</span>
+        <span class="meta-pill">Goal: Economic infrastructure</span>
+      </div>
+      <ul class="tips">
+        <li>TC 15: Resource demands start increasing — keep building upgrades queued</li>
+        <li>TC 16–18: Start a <strong>farm account</strong> to supplement resource income</li>
+        <li>TC 19: Mystic Trial unlocks — critical source of Mithril and Misty Crystals</li>
+        <li>Save gems for your first Hero Roulette (need 162K)</li>
+        <li>Identify your <strong>3 core heroes</strong> and stop investing in others</li>
+        <li>Never miss Bear Hunt from this point forward</li>
+      </ul>
+    </div>
+
+    <div class="phase">
+      <div class="phase-label">Phase 3 — Days 40–110</div>
+      <div class="phase-title">Acceleration (TC 20–25)</div>
+      <div class="phase-meta">
+        <span class="meta-pill">Target: 8M–20M Power</span>
+        <span class="meta-pill">Goal: Hero maxing + KvK prep</span>
+      </div>
+      <ul class="tips">
+        <li>TC 20: Event participation becomes critical</li>
+        <li>TC 22–23: At least one maxed hero by now</li>
+        <li><strong>TC 24 Wall:</strong> Costs roughly double — start hoarding speedups at TC 20</li>
+        <li>TC 25: Governor Charms unlock — prioritize Lethality &amp; Health charms</li>
+        <li>Invest in Hero Gear via Bear Hunt Forge Hammers</li>
+        <li>Start combat research for KvK preparation</li>
+        <li>Resource protection matters now — you're a raid target</li>
+      </ul>
+    </div>
+
+    <div class="phase">
+      <div class="phase-label">Phase 4 — Days 110+</div>
+      <div class="phase-title">Endgame (TC 26–30+)</div>
+      <div class="phase-meta">
+        <span class="meta-pill">Target: 25M+ Power</span>
+        <span class="meta-pill">Goal: Truegold + KvK dominance</span>
+      </div>
+      <ul class="tips">
+        <li>TC 26–27: <strong>Truegold</strong> becomes the primary bottleneck resource</li>
+        <li>TC 26: Heroes can reach max level 80</li>
+        <li>TC 28–29: Tempered Truegold gates further upgrades</li>
+        <li>Focus Truegold on the unlock path — don't spread it across multiple buildings</li>
+        <li>Governor Charms are the biggest single-source stat boost — don't neglect them</li>
+        <li>T11 Archers + maxed gear + Red gear are the endgame standards</li>
+      </ul>
+    </div>
+
+    <h3>Power Benchmarks (F2P)</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Day</th><th>Expected TC</th><th>F2P Avg Power</th><th>Good F2P Power</th></tr>
+        <tr><td>Day 7</td><td>TC 8–10</td><td>~300K</td><td>~500K+</td></tr>
+        <tr><td>Day 14</td><td>TC 12–14</td><td>~800K</td><td>~1.2M+</td></tr>
+        <tr><td>Day 30</td><td>TC 17–19</td><td>~2M</td><td>~3.5M+</td></tr>
+        <tr><td>Day 60</td><td>TC 22–24</td><td>~6M</td><td>~10M+</td></tr>
+        <tr><td>Day 90</td><td>TC 24–26</td><td>~12M</td><td>~18M+</td></tr>
+        <tr><td>Day 120</td><td>TC 26–28</td><td>~18M</td><td>~28M+</td></tr>
+        <tr><td>Day 200+</td><td>TC 28–30</td><td>~25M+</td><td>~40M+</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <!-- ════ F2P ════ -->
+  <section id="ftp">
+    <div class="section-header">
+      <span class="section-icon">💰</span>
+      <h2>F2P &amp; Low-Spender Strategy</h2>
+    </div>
+
+    <div class="callout callout-warn">
+      <span class="callout-label">⚠ Top 5 Progression Mistakes (Avoid These!)</span>
+      <ol style="padding-left:20px; line-height:2;">
+        <li><strong>Investing in too many heroes</strong> — 3 strong heroes > 8 weak ones. Period.</li>
+        <li><strong>Spending gems outside Hero Roulette</strong> — Only exception is the 2nd builder. Save everything else for Hero Roulette (need 162K for a full spin cycle).</li>
+        <li><strong>Using speedups outside events</strong> — Speedups during construction events earn 3x+ rewards. Hoard every speedup until the right window.</li>
+        <li><strong>Neglecting Bear Hunt</strong> — Your Forge Hammer supply depends entirely on this event.</li>
+        <li><strong>Ignoring the Storehouse</strong> — Resources above capacity are vulnerable every moment. Upgrade it before the TC 20+ resource rush.</li>
+      </ol>
+    </div>
+
+    <h3>Free Resource Sources</h3>
+    <div class="grid-2">
+      <div class="card card-green">
+        <div class="card-title">Daily Habits (30 min/day)</div>
+        <ul class="tips">
+          <li>Daily missions — consistent gold, resources, speedups + bonus chest</li>
+          <li>Intel missions (Watchtower) — hero XP potions + gear scraps</li>
+          <li>Growth Missions — huge milestone rewards</li>
+          <li>Alliance help requests — reduces build time via alliance members</li>
+          <li>Login rewards — claim every day</li>
+        </ul>
+      </div>
+      <div class="card card-blue">
+        <div class="card-title">Long-Term F2P Income</div>
+        <ul class="tips">
+          <li>Bear Hunt — Forge Hammers (non-negotiable, always participate)</li>
+          <li>Eternity's Reach — Charm Items for F2P charm grind</li>
+          <li>Hero Roulette events — save scrolls &amp; gems for the event window</li>
+          <li>Suppress Mode — rare resources (Mithril, Misty Crystals)</li>
+          <li>Farm Account — second account to donate resources to your main</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Suppress Mode</h3>
+    <div class="card card-purple">
+      <div class="card-title">Turn-Based Game Mode</div>
+      <p>A turn-based combat mode using 6 heroes. Each hero has <em>Suppress-specific skills</em> in addition to their Expedition skills. As heroes take turns, their ultimate skill meter fills — click the glowing icon to unleash ultimate attacks. Features 2x speed and auto-battle for cleared stages. Rewards include Mithril and Misty Crystals that are hard to find elsewhere. Push as far as you can.</p>
+    </div>
+
+    <h3>Gem Priority Guide</h3>
+    <div class="table-wrap">
+      <table>
+        <tr><th>Priority</th><th>Spend On</th><th>Reason</th></tr>
+        <tr><td><span class="priority p-high">HIGH</span></td><td>2nd Builder Queue</td><td>Unlocks at TC 7; time savings compound every day from day 1</td></tr>
+        <tr><td><span class="priority p-high">HIGH</span></td><td>Hero Roulette</td><td>The best hero investment; save 162K gems for a full cycle</td></tr>
+        <tr><td><span class="priority p-med">MED</span></td><td>VIP Level</td><td>VIP bonuses improve resource efficiency significantly at higher levels</td></tr>
+        <tr><td><span class="priority p-low">LOW</span></td><td>Building Speedups</td><td>Only if a critical TC upgrade would otherwise miss an event window</td></tr>
+        <tr><td><span class="priority p-low">AVOID</span></td><td>Random packs, cosmetics, single troop refreshes</td><td>Poor value vs. Hero Roulette</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <!-- ════ EXTERNAL RESOURCES ════ -->
+  <section id="resources">
+    <div class="section-header">
+      <span class="section-icon">🔗</span>
+      <h2>External Resources &amp; Community</h2>
+    </div>
+    <p>These are the best community-maintained sites and tools. Bookmark them — they're updated regularly as the game evolves.</p>
+
+    <div class="resource-links">
+      <a class="link-card" href="https://kingshotguides.com" target="_blank">
+        <div class="link-card-title">📖 KingshotGuides.com</div>
+        <div class="link-card-desc">Community guides with Bear Hunt, events calendar, hero tier lists by role, and gear upgrade guides. Also linked from Kingshot's official Discord.</div>
+        <div class="link-card-url">kingshotguides.com</div>
+      </a>
+      <a class="link-card" href="https://kingshotmastery.com" target="_blank">
+        <div class="link-card-title">🏆 KingshotMastery.com</div>
+        <div class="link-card-desc">Detailed progression roadmaps, event ROI calculations, F2P guide, gem spending math, and Alliance Championship strategies.</div>
+        <div class="link-card-url">kingshotmastery.com</div>
+      </a>
+      <a class="link-card" href="https://kingshotguide.com" target="_blank">
+        <div class="link-card-title">⚔ KingshotGuide.com</div>
+        <div class="link-card-desc">Comprehensive hero guides (individual builds for Prince William, Quinn, Chenko, Helga, Amadeus, Saul), troop composition guides, and database.</div>
+        <div class="link-card-url">kingshotguide.com</div>
+      </a>
+      <a class="link-card" href="https://kingshotcalculator.com" target="_blank">
+        <div class="link-card-title">🧮 KingshotCalculator.com</div>
+        <div class="link-card-desc">Building upgrade planner, Bear Hunt battle simulator, troop training calculator, hero stat comparison, gear upgrade costs, and charm materials tracker.</div>
+        <div class="link-card-url">kingshotcalculator.com</div>
+      </a>
+      <a class="link-card" href="https://kingshotdata.com" target="_blank">
+        <div class="link-card-title">📊 KingshotData.com</div>
+        <div class="link-card-desc">Game database for max levels, KvK event details, server timeline, hero shard costs, and gear enhancement requirements.</div>
+        <div class="link-card-url">kingshotdata.com</div>
+      </a>
+      <a class="link-card" href="https://kingshothandbook.com" target="_blank">
+        <div class="link-card-title">📘 KingshotHandbook.com</div>
+        <div class="link-card-desc">In-depth hero system guide covering classes, generations, expedition vs conquest skills, and individual hero builds (Amadeus, Rosa, Jaeger, Diana, Alcar).</div>
+        <div class="link-card-url">kingshothandbook.com</div>
+      </a>
+      <a class="link-card" href="https://kingshotguide.org" target="_blank">
+        <div class="link-card-title">🗺 KingshotGuide.org</div>
+        <div class="link-card-desc">Bear Hunt 2026 guide, Bear event damage maximization, island development, KvK strategies, Eternity's Reach guide, and fishing event guides.</div>
+        <div class="link-card-url">kingshotguide.org</div>
+      </a>
+      <a class="link-card" href="https://kingshot.fandom.com" target="_blank">
+        <div class="link-card-title">📚 Kingshot Fandom Wiki</div>
+        <div class="link-card-desc">Community wiki covering game events, hero XP requirements, and game mechanics. Good for raw data lookups.</div>
+        <div class="link-card-url">kingshot.fandom.com</div>
+      </a>
+    </div>
+
+    <div style="margin-top:28px;" class="callout callout-tip">
+      <span class="callout-label">💡 Stay Updated</span>
+      Kingshot continuously evolves with new hero generations, seasonal events, and balance patches. Check <strong>kingshotguides.com</strong> and <strong>kingshotmastery.com</strong> regularly — they maintain one of the most active community guide libraries and post directly to the official Kingshot Discord server.
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="container">
+    <p style="margin-bottom:8px; color:var(--gold);">⚔ Kingshot Community Strategy Guide · 2026 ⚔</p>
+    <p>Compiled from <a href="https://kingshotguides.com">kingshotguides.com</a>, <a href="https://kingshotmastery.com">kingshotmastery.com</a>, <a href="https://kingshothandbook.com">kingshothandbook.com</a>, and community strategy sources. Not affiliated with Century Games.</p>
+    <p style="margin-top:10px; font-size:0.8rem; color:var(--text-dim);">Share freely in your Discord. Last updated: March 2026.</p>
+  </div>
+</footer>
+
+
+<script>
+const SYSTEM_PROMPT = `You are an expert Kingshot strategy guide assistant. Kingshot is a medieval idle strategy-survival mobile game by Century Games. You have deep knowledge of all game mechanics: hero systems, troop formations, Bear Hunt, KvK, Alliance events, city building, gear progression, and island development.
+
+When asked about current events, use web search to find the latest Kingshot event information from sources like kingshotguides.com, kingshotmastery.com, kingshotdata.com, and the official Kingshot Discord/community pages.
+
+Format your responses clearly with:
+- A bolded event name at the top
+- Key strategies in bullet points  
+- Hero recommendations where relevant
+- F2P vs spender notes where relevant
+- Keep responses focused and actionable
+
+Today's date is: ${new Date().toLocaleDateString('en-US', {weekday:'long', year:'numeric', month:'long', day:'numeric'})}.`;
+
+let chatMessages = [];
+let lastFetchTime = null;
+
+async function callClaudeAPI(messages, useSearch = false) {
+  const body = {
+    model: "claude-sonnet-4-20250514",
+    max_tokens: 1000,
+    system: SYSTEM_PROMPT,
+    messages: messages
+  };
+  if (useSearch) {
+    body.tools = [{ type: "web_search_20250305", name: "web_search" }];
+  }
+  const res = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body)
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.error?.message || "API error " + res.status);
+  }
+  return await res.json();
+}
+
+function extractText(data) {
+  return (data.content || [])
+    .filter(b => b.type === "text")
+    .map(b => b.text)
+    .join("\n")
+    .trim();
+}
+
+function formatMarkdown(text) {
+  return text
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h3>$1</h3>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/^\* (.+)$/gm, '<li>$1</li>')
+    .replace(/^- (.+)$/gm, '<li>$1</li>')
+    .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
+    .replace(/(<li>.*<\/li>\n?)+/g, m => '<ul>' + m + '</ul>')
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/^(?!<[hup])(.+)$/gm, (m) => m.trim() ? m : '')
+    .replace(/<p><\/p>/g, '');
+}
+
+async function fetchCurrentEvent() {
+  const btn = document.getElementById('refreshBtn');
+  const loading = document.getElementById('mainLoading');
+  const result = document.getElementById('mainResult');
+  const resultBody = document.getElementById('mainResultBody');
+  const timestamp = document.getElementById('mainTimestamp');
+  const error = document.getElementById('mainError');
+
+  btn.disabled = true;
+  btn.classList.add('loading');
+  loading.style.display = 'flex';
+  result.classList.remove('visible');
+  error.classList.remove('visible');
+
+  try {
+    const data = await callClaudeAPI([{
+      role: "user",
+      content: `Search the web right now for the current active events in Kingshot (the mobile strategy game by Century Games). Find what events are running this week, their end dates if available, and the top strategies players should use to maximize rewards. Check kingshotguides.com, kingshotmastery.com, kingshotdata.com, and any recent Reddit or Discord posts about Kingshot events. Format your response with: 1) A bold heading listing the active events, 2) For each major event: what it is, key strategy tips, recommended heroes/formations, and reward highlights. Keep it practical and actionable for players checking in right now.`
+    }], true);
+
+    const text = extractText(data);
+    if (!text) throw new Error("No response received. Please try again.");
+
+    resultBody.innerHTML = '<p>' + formatMarkdown(text) + '</p>';
+    lastFetchTime = new Date();
+    timestamp.textContent = "⏱ Last updated: " + lastFetchTime.toLocaleTimeString() + " · " + lastFetchTime.toLocaleDateString();
+
+    loading.style.display = 'none';
+    result.classList.add('visible');
+
+    // Seed chat context with the event summary
+    chatMessages = [{
+      role: "user",
+      content: "What are the current active events in Kingshot and their strategies?"
+    }, {
+      role: "assistant",
+      content: text
+    }];
+
+  } catch (e) {
+    loading.style.display = 'none';
+    error.textContent = "⚠ " + (e.message || "Failed to fetch event data. Check your connection and try again.");
+    error.classList.add('visible');
+  }
+
+  btn.disabled = false;
+  btn.classList.remove('loading');
+}
+
+function quickAsk(q) {
+  document.getElementById('askInput').value = q;
+  askAI();
+}
+
+async function askAI() {
+  const input = document.getElementById('askInput');
+  const btn = document.getElementById('askBtn');
+  const history = document.getElementById('chatHistory');
+  const question = input.value.trim();
+  if (!question) return;
+
+  // Add user message
+  history.innerHTML += '<div class="ai-chat-msg user">' + escapeHTML(question) + '</div>';
+  input.value = '';
+  btn.disabled = true;
+
+  // Add thinking indicator
+  const thinkId = 'think-' + Date.now();
+  history.innerHTML += '<div class="ai-chat-thinking" id="' + thinkId + '"><div class="ai-loading-dots"><span></span><span></span><span></span></div> Searching strategy guides…</div>';
+  history.scrollTop = history.scrollHeight;
+
+  chatMessages.push({ role: "user", content: question });
+
+  try {
+    // Use search for event/current questions, skip for general lore
+    const needsSearch = /current|this week|now|today|event|latest|new|active/i.test(question);
+    const data = await callClaudeAPI(chatMessages, needsSearch);
+    const text = extractText(data);
+
+    document.getElementById(thinkId)?.remove();
+
+    if (!text) throw new Error("Empty response");
+
+    history.innerHTML += '<div class="ai-chat-msg assistant">' + formatMarkdown(text) + '</div>';
+    chatMessages.push({ role: "assistant", content: text });
+
+  } catch(e) {
+    document.getElementById(thinkId)?.remove();
+    history.innerHTML += '<div class="ai-chat-msg assistant" style="color:#ffb0a8">⚠ ' + escapeHTML(e.message || "Error — please try again.") + '</div>';
+    chatMessages.pop(); // remove the failed user message from context
+  }
+
+  btn.disabled = false;
+  history.scrollTop = history.scrollHeight;
+}
+
+function escapeHTML(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// Auto-fetch on page load
+window.addEventListener('DOMContentLoaded', fetchCurrentEvent);
+</script>
+
+</body>
+</html>
