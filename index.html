@@ -788,7 +788,7 @@ async function callClaude(messages, systemOverride) {
     messages: messages
   };
 
-  const res = await fetch("https://*-kingshot-proxy.burseer.workers.dev", {
+  const res = await fetch("https://kingshot-proxy.burseer.workers.dev", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body)
