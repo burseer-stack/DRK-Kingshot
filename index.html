@@ -1201,25 +1201,6 @@ const WORKER_URL = 'https://openai-3b56.burseer.workers.dev';
 
 let chatMessages = [];
 
-// ── Call the Cloudflare Worker (which calls OpenAI gpt-5) ────────────────────
-async function callWorker(messages) {
-  const response = await fetch(WORKER_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ messages })
-  });
-  if (!response.ok) {
-    const err = await response.json().catch(() => ({}));
-    throw new Error(err.error || 'Worker error ' + response.status);
-  }
-  return await response.json();
-}
-
-// ── Extract reply text from OpenAI response format ───────────────────────────
-function extractText(data) {
-  return data?.choices?.[0]?.message?.content?.trim() || '';
-}
-
 // ── Markdown → HTML renderer ─────────────────────────────────────────────────
 function formatMarkdown(text) {
   return text
@@ -1247,7 +1228,7 @@ function addBubble(role, html, isLoading) {
   return div;
 }
 
-// ── Main ask function ─────────────────────────────────────────────────────────
+// ── Main ask function (streaming) ─────────────────────────────────────────────
 async function askAI() {
   const input    = document.getElementById('aiInput');
   const btn      = document.getElementById('askBtn');
@@ -1261,27 +1242,79 @@ async function askAI() {
   addBubble('user', question, false);
   chatMessages.push({ role: 'user', content: question });
 
-  const loadingBubble = addBubble(
+  // Show the "thinking" placeholder immediately
+  const responseBubble = addBubble(
     'assistant',
     '&#x2694; Consulting the alliance archives\u2026',
     true
   );
 
+  let fullText = '';
+
   try {
-    const data = await callWorker(chatMessages);
-    const text = extractText(data);
+    const response = await fetch(WORKER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: chatMessages })
+    });
 
-    if (!text) throw new Error('Empty response from AI.');
+    if (!response.ok) {
+      const err = await response.json().catch(() => ({}));
+      throw new Error(err.error || 'Worker error ' + response.status);
+    }
 
-    loadingBubble.className = 'chat-bubble assistant';
-    loadingBubble.innerHTML =
-      formatMarkdown(text) +
+    // Switch bubble out of loading state as soon as first bytes arrive
+    responseBubble.className = 'chat-bubble assistant';
+
+    const reader  = response.body.getReader();
+    const decoder = new TextDecoder();
+    let   buffer  = '';
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      // Decode the incoming chunk and add to our line buffer
+      buffer += decoder.decode(value, { stream: true });
+
+      // OpenAI streams server-sent events: "data: {...}\n\n"
+      const lines = buffer.split('\n');
+      buffer = lines.pop(); // keep any incomplete line for next iteration
+
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (!trimmed || trimmed === 'data: [DONE]') continue;
+        if (!trimmed.startsWith('data: ')) continue;
+
+        try {
+          const json  = JSON.parse(trimmed.slice(6));
+          const delta = json.choices?.[0]?.delta?.content;
+          if (delta) {
+            fullText += delta;
+            // Re-render the bubble with the accumulated text so far
+            responseBubble.innerHTML = formatMarkdown(fullText);
+            // Keep scrolled to bottom as content grows
+            const hist = document.getElementById('chatHistory');
+            hist.scrollTop = hist.scrollHeight;
+          }
+        } catch {
+          // Ignore malformed chunks
+        }
+      }
+    }
+
+    if (!fullText) throw new Error('Empty response from AI.');
+
+    // Append the source tag once streaming is complete
+    responseBubble.innerHTML =
+      formatMarkdown(fullText) +
       '<div class="source-tag">&#x1F916; DarkKnights AI &middot; Powered by GPT-5</div>';
 
-    chatMessages.push({ role: 'assistant', content: text });
+    chatMessages.push({ role: 'assistant', content: fullText });
+
   } catch (err) {
-    loadingBubble.className = 'chat-bubble assistant';
-    loadingBubble.innerHTML =
+    responseBubble.className = 'chat-bubble assistant';
+    responseBubble.innerHTML =
       '<strong>Error:</strong> ' + err.message +
       '<br><small>Check that your Cloudflare Worker is deployed correctly.</small>';
   }
